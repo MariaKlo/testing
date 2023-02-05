@@ -10,30 +10,33 @@ import { NotFound } from './pages/NotFound/NotFound';
 import { Restaurant } from './components/Restaurant/Restaurant';
 import { Menu } from './components/Menu/Menu';
 import { Reviews } from './components/Reviews/Reviews';
+import { ThemeContextProvider } from './components/ThemeContextProvier/ThemeContextProvider';
 
 export const App = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <Layout>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="restaurants" element={<RestaurantsPage />}>
-              <Route index element={<span>choose restaurant</span>} />
-              <Route path=":restaurantId" element={<Restaurant />}>
-                <Route index element={<Navigate to="menu" replace />} />
-                <Route path="menu" element={<Menu />} />
-                <Route path="reviews" element={<Reviews />} />
+        <ThemeContextProvider>
+          <Layout>
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path="restaurants" element={<RestaurantsPage />}>
+                <Route index element={<span>choose restaurant</span>} />
+                <Route path=":restaurantId" element={<Restaurant />}>
+                  <Route index element={<Navigate to="menu" replace />} />
+                  <Route path="menu" element={<Menu />} />
+                  <Route path="reviews" element={<Reviews />} />
+                </Route>
               </Route>
-            </Route>
-            <Route path="cart" element={<Cart />} />
-            <Route
-              path="closed-page"
-              element={<Navigate to="/restaurants" replace />}
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
+              <Route path="cart" element={<Cart />} />
+              <Route
+                path="closed-page"
+                element={<Navigate to="/restaurants" replace />}
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </ThemeContextProvider>
       </Provider>
     </BrowserRouter>
   );

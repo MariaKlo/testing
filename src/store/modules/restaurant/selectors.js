@@ -1,10 +1,11 @@
 import { LOADING_STATUSES } from '../../constants/loadingStatuses';
 import {
-  selectDishById,
   selectDishEntities,
   selectIsDishSuccessLoaded,
 } from '../dish/selectors';
 import { compareDishesByName } from '../dish/utils/compareByName';
+import { createSelector } from 'reselect';
+import { selectReviewEntities } from '../review/selectors';
 
 export const selectRestaurantModule = (state) => state.restaurant;
 
@@ -52,3 +53,38 @@ export const selectRestaurantLoadingStatus = (state) =>
 
 export const selectIsRestaurantLoading = (state) =>
   selectRestaurantLoadingStatus(state) === LOADING_STATUSES.loading;
+
+// export const selectRestaurantRating = (state, { restaurantId }) => {
+//   const restaurantReviewIds = selectRestaurantReviewsById(state, {
+//     restaurantId,
+//   });
+//   const reviewEntities = selectReviewEntities(state);
+
+//   if (!Object.keys(reviewEntities)?.length) {
+//     return 0;
+//   }
+
+//   return Math.round(
+//     restaurantReviewIds.reduce(
+//       (sum, reviewId) => sum + reviewEntities[reviewId]?.rating || 0,
+//       0
+//     ) / restaurantReviewIds.length
+//   );
+// };
+
+export const createSelectRestaurantRating = () =>
+  createSelector(
+    [selectRestaurantReviewsById, selectReviewEntities],
+    (restaurantReviewIds, reviewEntities) => {
+      if (!Object.keys(reviewEntities)?.length) {
+        return 0;
+      }
+
+      return Math.round(
+        restaurantReviewIds.reduce(
+          (sum, reviewId) => sum + reviewEntities[reviewId]?.rating || 0,
+          0
+        ) / restaurantReviewIds.length
+      );
+    }
+  );

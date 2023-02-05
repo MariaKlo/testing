@@ -2,6 +2,9 @@ import { LOADING_STATUSES } from '../../constants/loadingStatuses';
 
 export const selectReviewModule = (state) => state.review;
 
+export const selectReviewEntities = (state) =>
+  selectReviewModule(state).entities;
+
 export const selectReviewById = (state, { reviewId }) =>
   selectReviewModule(state).entities[reviewId];
 

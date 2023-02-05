@@ -25,13 +25,11 @@ export const Reviews = () => {
   return (
     <div>
       <h2>Reviews</h2>
-      <ul>
+      <div>
         {reviewIds.map((id) => (
-          <li>
-            <Review reviewId={id} />
-          </li>
+          <Review key={id} reviewId={id} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

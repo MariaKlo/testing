@@ -44,3 +44,7 @@
 .link:not(:first-child) {
     margin-left: 20px;
 }
+
+.button {
+    margin-left: 40px;
+}
