@@ -7,7 +7,7 @@ import { createSelectRestaurantRating } from '../../store/modules/restaurant/sel
 import { selectIsReviewLoading } from '../../store/modules/review/selectors';
 import { fetchReviewsByRestaurantId } from '../../store/modules/review/thunk/fetchReviewsByRestaurantId';
 
-export const RestaurantRating = ({ restaurantId }) => {
+export const RestaurantRating = ({ restaurantId, className }) => {
   const dispatch = useDispatch();
   const selectRestaurantRating = useCallback(
     createSelectRestaurantRating(),
@@ -27,7 +27,7 @@ export const RestaurantRating = ({ restaurantId }) => {
     return <span>Loading...</span>;
   }
 
-  return <Rating value={rating} size={Size.l} />;
+  return <Rating value={rating} size={Size.l} className={className} />;
 };
 
 export const RestaurantRatingWithMemo = React.memo(RestaurantRating);

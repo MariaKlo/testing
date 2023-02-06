@@ -4,8 +4,9 @@ import { Size } from '../../constants/ui';
 import { useSelector } from 'react-redux';
 import { selectReviewById } from '../../store/modules/review/selectors';
 import { User } from '../User/User';
+import classNames from 'classnames';
 
-export const Review = ({ reviewId }) => {
+export const Review = ({ reviewId, className }) => {
   const review = useSelector((state) => selectReviewById(state, { reviewId }));
 
   if (!review) {
@@ -15,10 +16,12 @@ export const Review = ({ reviewId }) => {
   const { text, rating, userId } = review;
 
   return (
-    <div className={styles.root}>
+    <div className={classNames(styles.root, className)}>
+      <div className={styles.header}>
+        <User userId={userId} />
+        <Rating value={rating} size={Size.s} />
+      </div>
       <div>{text}</div>
-      <Rating value={rating} size={Size.s} />
-      <User userId={userId} />
     </div>
   );
 };

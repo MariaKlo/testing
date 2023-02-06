@@ -6,6 +6,8 @@ import { selectIsReviewLoading } from '../../store/modules/review/selectors';
 import { fetchReviewsByRestaurantId } from '../../store/modules/review/thunk/fetchReviewsByRestaurantId';
 import { useParams } from 'react-router-dom';
 
+import styles from './styles.module.css';
+
 export const Reviews = () => {
   const { restaurantId } = useParams();
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ export const Reviews = () => {
       <h2>Reviews</h2>
       <div>
         {reviewIds.map((id) => (
-          <Review key={id} reviewId={id} />
+          <Review key={id} reviewId={id} className={styles.review} />
         ))}
       </div>
     </div>

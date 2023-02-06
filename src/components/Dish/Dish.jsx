@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addDish, removeDish } from '../../store/modules/cart/actions';
 import { selectDishCountByName } from '../../store/modules/cart/selectors';
 import { selectDishById } from '../../store/modules/dish/selectors';
+import { Link } from 'react-router-dom';
 
-export const Dish = ({ dishId }) => {
+export const Dish = ({ dishId, route, className }) => {
   const dish = useSelector((state) => selectDishById(state, { dishId }));
   const count = useSelector((state) =>
     selectDishCountByName(state, { dishId })
@@ -21,18 +22,27 @@ export const Dish = ({ dishId }) => {
   const decrement = () => dispatch(removeDish(dishId));
   const increment = () => dispatch(addDish(dishId));
 
-  const { name } = dish;
+  const { name, ingredients } = dish;
 
   return (
     <div
-      className={classnames(styles.root, {
+      className={classnames(styles.root, className, {
         [styles.rootBig]: count > 4,
       })}
     >
-      {name}
+      <div>
+        {route ? (
+          <Link to={route} className={classnames(styles.name, styles.link)}>
+            {name}
+          </Link>
+        ) : (
+          <span className={styles.name}>{name}</span>
+        )}
+        <div>{ingredients?.join(', ')}</div>
+      </div>
       <div>
         <Button onClick={decrement}>-</Button>
-        {count}
+        <span className={styles.count}>{count}</span>
         <Button onClick={increment}>+</Button>
       </div>
     </div>

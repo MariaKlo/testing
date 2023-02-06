@@ -4,6 +4,8 @@ import {
   selectUserById,
 } from '../../store/modules/user/selectors';
 
+import styles from './styles.module.css';
+
 export const User = ({ userId }) => {
   const user = useSelector((state) => selectUserById(state, { userId }));
 
@@ -17,5 +19,5 @@ export const User = ({ userId }) => {
     return null;
   }
 
-  return <div>{user.name}</div>;
+  return <div className={styles.root}>{user.name}</div>;
 };

@@ -11,6 +11,8 @@ import { Restaurant } from './components/Restaurant/Restaurant';
 import { Menu } from './components/Menu/Menu';
 import { Reviews } from './components/Reviews/Reviews';
 import { ThemeContextProvider } from './components/ThemeContextProvier/ThemeContextProvider';
+import { DishPage } from './pages/Dish/DishPage';
+import { DishesPage } from './pages/Dishes/DishesPage';
 
 export const App = () => {
   return (
@@ -29,6 +31,8 @@ export const App = () => {
                 </Route>
               </Route>
               <Route path="cart" element={<Cart />} />
+              <Route path="dish/:dishId" element={<DishPage />} />
+              <Route path="dishes" element={<DishesPage />} />
               <Route
                 path="closed-page"
                 element={<Navigate to="/restaurants" replace />}

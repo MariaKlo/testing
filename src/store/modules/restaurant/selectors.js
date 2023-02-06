@@ -88,3 +88,10 @@ export const createSelectRestaurantRating = () =>
       );
     }
   );
+
+export const selectRestaurantIdsFilteredByDishId = (state, { dishId }) =>
+  selectRestaurantIds(state).filter((restaurantId) => {
+    const restaurant = selectRestaurantById(state, { restaurantId });
+
+    return !!restaurant?.menu.includes(dishId);
+  });

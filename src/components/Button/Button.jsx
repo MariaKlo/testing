@@ -13,7 +13,7 @@ export const Button = ({
   disabled,
   className,
   size = Size.m,
-  viewVariant = ButtonViewVariant.second,
+  viewVariant = ButtonViewVariant.prime,
 }) => {
   return (
     <button

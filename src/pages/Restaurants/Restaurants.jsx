@@ -7,6 +7,8 @@ import { fetchRestaurants } from '../../store/modules/restaurant/thunk/fetchRest
 import { fetchUsers } from '../../store/modules/user/thunk/fetchUsers';
 import { Outlet } from 'react-router-dom';
 
+import styles from './styles.module.css';
+
 export const RestaurantsPage = () => {
   const dispatch = useDispatch();
   const [activeRestaurantId, setActiveRestaurantId] = useState();
@@ -22,10 +24,11 @@ export const RestaurantsPage = () => {
   }
 
   return (
-    <div>
+    <div className={styles.root}>
       <Tabs onTabClick={setActiveRestaurantId} activeId={activeRestaurantId} />
-      {/* {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />} */}
-      <Outlet />
+      <div className={styles.restaurant}>
+        <Outlet />
+      </div>
     </div>
   );
 };
