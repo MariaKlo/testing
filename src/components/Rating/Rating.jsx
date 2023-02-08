@@ -25,6 +25,7 @@ export const Rating = ({
               className={classnames(styles.star, styles[size])}
               loading="lazy"
               onClick={() => onChange?.(index + 1)}
+              alt="star"
             />
           ))}
     </div>

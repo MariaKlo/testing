@@ -1,8 +1,5 @@
 import { useSelector } from 'react-redux';
-import {
-  selectRestaurantById,
-  selectRestaurantRating,
-} from '../../store/modules/restaurant/selectors';
+import { selectRestaurantById } from '../../store/modules/restaurant/selectors';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { RestaurantRating } from '../../containers/RestaurantRating/RestaurantRating';
 import classNames from 'classnames';

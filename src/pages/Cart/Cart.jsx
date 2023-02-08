@@ -25,7 +25,7 @@ export const Cart = () => {
       {dishIds.length > 0 ? (
         <div>
           {dishIds.map((dishId) => (
-            <Dish dishId={dishId} className={styles.dish} />
+            <Dish key={dishId} dishId={dishId} className={styles.dish} />
           ))}
         </div>
       ) : (

@@ -4,10 +4,10 @@
 }
 
 .root:hover {
-    color: grey;
+    color: rgb(103, 66, 12);
 }
 
 .root.isActive {
-    color: grey;
+    color: rgb(103, 66, 12);
     cursor: default;
 }

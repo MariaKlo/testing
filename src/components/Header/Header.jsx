@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <header className={styles.root}>
       <Link to="/" className={styles.link}>
-        <img src={Logo} />
+        <img src={Logo} alt="anyfood" />
       </Link>
       <Link to="/restaurants" className={styles.link}>
         Restaurants

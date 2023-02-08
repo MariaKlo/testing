@@ -54,24 +54,6 @@ export const selectRestaurantLoadingStatus = (state) =>
 export const selectIsRestaurantLoading = (state) =>
   selectRestaurantLoadingStatus(state) === LOADING_STATUSES.loading;
 
-// export const selectRestaurantRating = (state, { restaurantId }) => {
-//   const restaurantReviewIds = selectRestaurantReviewsById(state, {
-//     restaurantId,
-//   });
-//   const reviewEntities = selectReviewEntities(state);
-
-//   if (!Object.keys(reviewEntities)?.length) {
-//     return 0;
-//   }
-
-//   return Math.round(
-//     restaurantReviewIds.reduce(
-//       (sum, reviewId) => sum + reviewEntities[reviewId]?.rating || 0,
-//       0
-//     ) / restaurantReviewIds.length
-//   );
-// };
-
 export const createSelectRestaurantRating = () =>
   createSelector(
     [selectRestaurantReviewsById, selectReviewEntities],
