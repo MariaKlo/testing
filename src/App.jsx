@@ -2,7 +2,7 @@ import React from 'react';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import { RestaurantsPage } from './pages/Restaurants/Restaurants';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { Home } from './pages/Home/Home';
 import { Cart } from './pages/Cart/Cart';
@@ -16,7 +16,7 @@ import { DishesPage } from './pages/Dishes/DishesPage';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <ThemeContextProvider>
           <Layout>
@@ -42,6 +42,6 @@ export const App = () => {
           </Layout>
         </ThemeContextProvider>
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
