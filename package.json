@@ -1,7 +1,7 @@
 {
   "name": "react-2022-12-21",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "http://mariaklo.github.io/testing",
   "private": false,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
